@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kategorije - Recepti</title>
+    <link rel="stylesheet" href="categories_page.css">
+</head>
+<body>
+
+    <header>
+        <h1>Kategorije recepata</h1>
+        <button onclick="window.location.href='index.html'">Nazad na početnu</button>
+    </header>
+
+    <section class="category-selection">
+        <label for="category">Izaberite kategoriju:</label>
+        <select id="category">
+            <option value="all">Sve kategorije</option>
+            <option value="Torte">Torte</option>
+            <option value="Kolaci">Kolači</option>
+            <option value="Glavna jela">Glavna jela</option>
+            <option value="Salate">Salate</option>
+            <option value="Pica">Pića</option>
+        </select>
+    </section>
+
+    <section class="recipes-container">
+        <div id="recipes-grid">
+            
+        </div>
+    </section>
+
+    <script src="categories_page.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="modal1.css">
+ </head>
+ <body>
+    <div id="editUserModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeEditUserModal()">&times;</span>
+            
+            
+            <form id="editUserForm" action="update_user.php" method="post">
+                <h2>Izmeni Korisnika</h2>
+                <label for="username">Korisnicko ime:</label>
+                <input class="textbox" type="text" id="editUsername" name="username" required>
+    
+                <label for="email">Email:</label>
+                <input class="textbox" type="email" id="editEmail" name="email" required>
+                <label for="role">Uloga:</label>
+                <select class="textbox" id="editRole" name="role_id" required>
+                <option value="1">Administrator</option>
+                <option value="2">Moderator</option>
+                <option value="3">Korisnik</option>
+                </select>
+
+    
+             <!--  <label for="password">Lozinka:</label>
+                <input class="textbox" type="password" id="editPassword" name="password">
+            --> 
+                 <input class="textbox" type="hidden" id="user_id" name="user_id"> 
+                <br><br>
+                <button type="submit" class="textbox" id="button" >Spremi promene</button>
+                <button class="back-button" type="button" onclick="window.location.href='admin_dashboard.php'">
+                ⬅ Povratak na Dashboard
+                </button>
+            </form>
+        </div>
+    </div>
+    <script src="admin_update.js"></script>
+ </body>
+ </html>
+

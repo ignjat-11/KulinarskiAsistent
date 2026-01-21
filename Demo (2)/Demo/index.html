@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Početna - Recepti</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+            <div class="logo">Recepti</div>
+            <nav>
+                <ul>
+                    <li><a href="categories_page.html">Kategorije</a></li>
+                    <li><a href="svi_recepti.php">Svi recepti</a></li>
+                    <li><a href="kontakt.html">Kontakt</a></li>
+                </ul>
+            </nav>
+            <div class="auth-links">
+                <a href="login.php">Prijava</a>
+                <a href="register.php">Registracija</a>
+            </div>
+        </header>
+        
+        <main>
+            <section class="hero">
+                <h1>Dobrodošli u svet ukusnih recepata!</h1>
+                <p>Pronađite, podelite i uživajte u najboljim receptima.</p>
+            </section>
+            
+            <div class="pozadina">
+            <section class="categories">
+                <h2>Kategorije recepata</h2>
+                <div class="category-list">
+                    <div class="category" data-category="Torte">Torte</div>
+                    <div class="category" data-category="Kolaci">Kolači</div>
+                    <div class="category" data-category="Glavna jela">Glavna jela</div>
+                    <div class="category" data-category="Salate">Salate</div>
+                    <div class="category" data-category="Pica">Pića</div>
+                </div>
+            </section>
+
+            <section class="latest-recipes">
+                
+                <div class="recipes-grid">
+                    
+                </div>
+            </section>
+        </div>
+        </main>
+        
+
+        <footer>
+            <div class="footer-content">
+                <p>&copy; 2025 Recepti. Sva prava zadržana.</p>
+                <ul class="footer-links">
+                    <li><a href="about_as.html">O nama</a></li>
+                    <li><a href="privacy_policy.html">Politika privatnosti</a></li>
+                    <li><a href="terms_of_service.html">Uslovi korišćenja</a></li>
+                    <li><a href="kontakt.html">Kontakt</a></li>
+                </ul>
+            </div>
+        </footer>
+    </div>
+
+    <script src="categories_recipes.js"></script>
+    <script>
+        function toggleRecipe(button) {
+            var recipeDetails = button.closest(".recipe-card").querySelector(".recipe-details");
+            if (recipeDetails.style.display === "none" || recipeDetails.style.display === "") {
+                recipeDetails.style.display = "block";
+                button.textContent = "Sakrij recept";
+            } else {
+                recipeDetails.style.display = "none";
+                button.textContent = "Prikaži recept";
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            document.querySelector(".category-list").addEventListener("click", function(event) {
+                if (event.target.classList.contains("category")) {
+                    let selectedCategory = event.target.getAttribute("data-category");
+
+                    fetch("categories_recipes.php?category=" + encodeURIComponent(selectedCategory))
+                        .then(response => response.text())
+                        .then(data => {
+                            document.querySelector(".recipes-grid").innerHTML = data;
+                        })
+                        .catch(error => console.error("Greška: ", error));
+                }
+            });
+        });
+    </script>
+</body>
+</html>
